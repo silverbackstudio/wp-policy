@@ -1,0 +1,26 @@
+{
+    "name": "silverback/svbk-wp-policy",
+    "description": "Policy Management Plugin",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Brando Meniconi",
+            "email": "b.meniconi@silverbackstudio.it"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Svbk\\WP\\Privacy\\": "src/"}
+    },     
+    "require-dev": {        
+    },
+    "scripts": {
+        "test": [
+          "vendor/bin/phpcs src",
+          "vendor/bin/phpunit --bootstrap ../../../wp/wp-load.php --color tests"
+        ],        
+        "beautify": [
+          "vendor/bin/phpcbf src"
+        ]        
+    }     
+}

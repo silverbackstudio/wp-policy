@@ -1,0 +1,18 @@
+{
+    "name": "svbk/cookie-policy",
+    "category": "policy",
+    "attributes": {
+        "email": {
+            "type": "string"
+        },
+        "company": {
+            "type": "string"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        }
+    }
+}

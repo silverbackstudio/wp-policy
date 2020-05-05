@@ -1,0 +1,32 @@
+{
+  "name": "svbk-wp-policy",
+  "version": "1.0.0",
+  "description": "A Wordpress Plugin to manage Policies",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "author": "Brando Meniconi <b.meniconi@silverbackstudio.it>",
+  "license": "ISC",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
+    "build:scss": "node-sass src/ -o build/",
+    "watch:scss": "node-sass --watch src/ -o build/",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "format:js": "wp-scripts format-js",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "lint:md:docs": "wp-scripts lint-md-docs",
+    "lint:md:js": "wp-scripts lint-md-js",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:unit": "wp-scripts test-unit-js"
+  },
+  "dependencies": {
+    "@wordpress/scripts": "^9.0.0",
+    "node-sass": "^4.14.1"
+  }
+}
