@@ -1,6 +1,6 @@
 {
     "name": "silverback/svbk-wp-policy",
-    "description": "Policy Management Plugin",
+    "description": "Wordpress Policy Management Plugin",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-only",
     "authors": [
