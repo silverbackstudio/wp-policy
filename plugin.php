@@ -133,6 +133,11 @@ add_filter( 'wp_get_default_privacy_policy_content', 'svbk_policy_default_privac
 function svbk_policy_content($name, $attributes){
 	
 	$provider = svbk_policy_get_provider();	
+
+	if ( empty( $attributes['language'] ) ) {
+		$attributes['language'] = get_locale();
+	}
+
 	$attributes = apply_filters( 'svbk_policy_attributes', $attributes, $name );
 
 	$provider_content = $provider->getPolicyContent($name, $attributes);

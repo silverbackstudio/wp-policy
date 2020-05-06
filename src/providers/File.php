@@ -17,11 +17,22 @@ class File implements ProviderInterface {
             if ( !array_key_exists( $name, $this->getAvailablePolicies() ) ) {
                 return '';
             }
+            
+            $folder = __DIR__ . DIRECTORY_SEPARATOR . 'static-policies' . DIRECTORY_SEPARATOR;
+            $filename =  $name . '.html';
 
+            $lang_folder = !empty($params['language']) ? ($params['language'] . DIRECTORY_SEPARATOR) : '';
+
+            if ( \file_exists( $folder .  $lang_folder . $filename ) ) {
+                $content = \file_get_contents(  $folder  .  $lang_folder . DIRECTORY_SEPARATOR . $filename );
+            } else if( \file_exists(  $folder . $filename ) ) {
+                $content = \file_get_contents(  $folder . $filename );
+            } else {
+                return '';
+            }
+            
             $search = array_map( array( self::class, 'paramPlaceholder' ) , array_keys($params));
             $replace = array_values($params);
-            
-            $content = \file_get_contents( __DIR__ . DIRECTORY_SEPARATOR . 'static-policies' . DIRECTORY_SEPARATOR . $name . '.html' );
 
             return str_replace( $search, $replace, $content );
     }	
