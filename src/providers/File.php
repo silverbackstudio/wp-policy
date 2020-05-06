@@ -14,28 +14,25 @@ class File implements ProviderInterface {
      */
     public function getPolicyContent( $name = 'privacy-policy', $params = array() ){
 
-            if ( !array_key_exists( $name, $this->getAvailablePolicies() ) ) {
-                return '';
-            }
-            
-            $folder = __DIR__ . DIRECTORY_SEPARATOR . 'static-policies' . DIRECTORY_SEPARATOR;
-            $filename =  $name . '.html';
+        if ( !array_key_exists( $name, $this->getAvailablePolicies() ) ) {
+            return '';
+        }
+        
+        $folder = __DIR__ . DIRECTORY_SEPARATOR . 'static-policies' . DIRECTORY_SEPARATOR;
+        $filename =  $name . '.html';
 
-            $lang_folder = !empty($params['language']) ? ($params['language'] . DIRECTORY_SEPARATOR) : '';
+        $lang_folder = !empty($params['language']) ? ($params['language'] . DIRECTORY_SEPARATOR) : '';
 
-            if ( \file_exists( $folder .  $lang_folder . $filename ) ) {
-                $content = \file_get_contents(  $folder  .  $lang_folder . DIRECTORY_SEPARATOR . $filename );
-            } else if( \file_exists(  $folder . $filename ) ) {
-                $content = \file_get_contents(  $folder . $filename );
-            } else {
-                return '';
-            }
-            
-            $search = array_map( array( self::class, 'paramPlaceholder' ) , array_keys($params));
-            $replace = array_values($params);
+        if ( \file_exists( $folder .  $lang_folder . $filename ) ) {
+            $content = \file_get_contents(  $folder  .  $lang_folder . DIRECTORY_SEPARATOR . $filename );
+        } else if( \file_exists(  $folder . $filename ) ) {
+            $content = \file_get_contents(  $folder . $filename );
+        } else {
+            return '';
+        }
 
-            return str_replace( $search, $replace, $content );
-    }	
+        return $content;
+    }	    
 
     /**
      * Get the list of the available policies
@@ -49,14 +46,5 @@ class File implements ProviderInterface {
         );
     }    
 
-    /**
-     * Wraps param in it's placeholder
-     *
-     * @param string $name 	Attribute name
-     * @return void
-     */
-    protected static function paramPlaceholder($param){
-        return '{{' . $param . '}}';
-    }
 
 }

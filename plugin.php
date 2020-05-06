@@ -142,7 +142,12 @@ function svbk_policy_content($name, $attributes){
 
 	$provider_content = $provider->getPolicyContent($name, $attributes);
 
-    return $provider_content;
+	$search = array_map( 'svbk_policy_attribute_placeholder', array_keys($attributes));
+	$replace = array_values($attributes);
+
+	$content = str_replace( $search, $replace, $provider_content );
+	
+    return apply_filters( 'svbk_policy_content', $content, $name, $attributes);
 }
 
 /**
@@ -151,7 +156,7 @@ function svbk_policy_content($name, $attributes){
  * @param string $name 	Attribute name
  * @return void
  */
-function svbk_policy_placeholder($name){
+function svbk_policy_attribute_placeholder($name){
 	return '{{' . $name . '}}';
 }
 
@@ -161,7 +166,8 @@ function svbk_policy_placeholder($name){
  * @return void
  */
 function svbk_policy_get_provider(){
-	return new \Svbk\WP\Privacy\Providers\File;
+	$provider = new \Svbk\WP\Privacy\Providers\File;
+	return apply_filters('svbk_policy_provider', $provider );
 }
 
 /**

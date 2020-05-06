@@ -13,6 +13,7 @@ Provides a set of components to generate and embed Privacy Policies in Wordpress
 * Shortcode `[svbk-policy /]`
 * Policy customization with Company Name, Address, Email, etc
 * Wordpress default policy page replacement
+* Languages support (en, it)
 * Dynamic import from Policy Providers (in progress)
 
 ## Installation
