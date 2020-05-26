@@ -1,0 +1,4 @@
+li > div {
+  margin-top: -1.9rem; }
+  li > div > *:first-child {
+    margin-top: 0; }
