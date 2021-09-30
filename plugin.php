@@ -120,7 +120,7 @@ function svbk_policy_default_privacy_content($privacy_content){
 
     return $provider_content;
 }
-add_filter( 'wp_get_default_privacy_policy_content', 'svbk_policy_default_privacy_content' );
+add_filter( 'wp_add_privacy_policy_content', 'svbk_policy_default_privacy_content' );
 
 
 /**
