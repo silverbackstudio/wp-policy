@@ -26,7 +26,7 @@
     "test:unit": "wp-scripts test-unit-js"
   },
   "dependencies": {
-    "@wordpress/scripts": "^9.0.0",
+    "@wordpress/scripts": "^31.0.0",
     "node-sass": "^4.14.1"
   }
 }
